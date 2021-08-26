@@ -4,4 +4,7 @@ public class Usuario {
 private double presupuesto;
 private double tiempoDisponible;
 private String tipoAtraccionFavorita;
+
+  //testando el actualizar el trabajo  
+   
 }
