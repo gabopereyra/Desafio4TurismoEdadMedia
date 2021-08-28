@@ -51,5 +51,6 @@ public class Atraccion implements Comparable <Atraccion> {
 
 		return 0;
 	}
+	///PRUEBA
 
 }
