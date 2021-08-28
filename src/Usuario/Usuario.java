@@ -6,7 +6,6 @@ public class Usuario {
 	private String tipoAtraccionFavorita;
 
 	public Usuario(double presupuesto, double tiempoDisponible, String tipoAtraccionFavorita) {
-
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoAtraccionFavorita = tipoAtraccionFavorita;

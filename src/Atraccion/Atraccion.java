@@ -1,10 +1,10 @@
 package Atraccion;
 
-public class Atraccion implements Comparable<Atraccion> {
+public class Atraccion implements Comparable <Atraccion> {
 	protected String nombre;
-	protected double costoAtraccion = 10;
-	protected double tiempoNecesario = 1;
-	protected int cupo = 10;
+	protected double costoAtraccion;
+	protected double tiempoNecesario;
+	protected int cupo;
 	private String tipoAtraccion;
 
 	public Atraccion(String nombre, double costoAtraccion, double tiempoNecesario, int cupo, String tipoAtraccion) {
@@ -13,17 +13,6 @@ public class Atraccion implements Comparable<Atraccion> {
 		this.tiempoNecesario = tiempoNecesario;
 		this.cupo = cupo;
 		this.tipoAtraccion = tipoAtraccion;
-	}
-
-	public Atraccion(double costoAtraccion, double tiempoNecesario, int cupo) {
-
-	}
-
-	public Atraccion(double costoAtraccion, double tiempoNecesario) {
-
-	}
-
-	public Atraccion(double costoAtraccion) {
 	}
 
 	public Atraccion() {
@@ -47,8 +36,7 @@ public class Atraccion implements Comparable<Atraccion> {
 	}
 
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	@Override 
