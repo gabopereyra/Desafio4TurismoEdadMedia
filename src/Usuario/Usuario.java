@@ -1,4 +1,6 @@
 package Usuario;
+import java.util.List;
+
 import Atraccion.*;
 
 public class Usuario {
@@ -6,10 +8,10 @@ public class Usuario {
 	private double tiempoDisponible;
 	private String tipoAtraccionFavorita;
 	
-	private Atraccion[] atraccionesSugeridas;
+	private List<Atraccion> atraccionesSugeridas;
 	private int indiceAtraccionesSugeridas = 0;
 
-	private Atraccion[] itinerario;
+	private List<Atraccion> itinerario;
 
 	public Usuario(double presupuesto, double tiempoDisponible, String tipoAtraccionFavorita) {
 		this.presupuesto = presupuesto;
@@ -33,7 +35,7 @@ public class Usuario {
 		return tipoAtraccionFavorita;
 	}
 
-	public Atraccion[] getAtraccionesSugeridas() {
+	public List<Atraccion> getAtraccionesSugeridas() {
 		if (indiceAtraccionesSugeridas != 0) {
 			return atraccionesSugeridas;
 		}
@@ -44,12 +46,12 @@ public class Usuario {
 		indiceAtraccionesSugeridas = 0;
 	}
 
-	public void cargarSugerencias(Atraccion[] atraccionesDisponibles) {
+	public void cargarSugerencias(List<Atraccion> atraccionesDisponibles) {
 		for (Atraccion i : atraccionesDisponibles) {
 			if (i.getCostoAtraccion() < this.presupuesto) {
 				if (i.getTiempoNecesario() < this.tiempoDisponible) {
-					atraccionesSugeridas[indiceAtraccionesSugeridas] = i;
-					indiceAtraccionesSugeridas++;
+					atraccionesSugeridas.add(i);
+					
 				}
 			}
 		}
