@@ -1,4 +1,5 @@
 package Usuario;
+import Atraccion.*;
 
 public class Usuario {
 	private double presupuesto;

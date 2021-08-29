@@ -15,7 +15,7 @@ public class CreacionAtraccion {
 	Atraccion Erebor = new Atraccion("Erebor", 12.0, 3.0, 32, "Paisaje");
 	Atraccion BosqueNegro = new Atraccion("BosqueNegro", 3.0, 4.0, 12, "Aventura");
 
-	public void crearLista() {
+	public List<Atraccion> crearLista() {
 		listado.add(Moria);
 		listado.add(MinasTirith);
 		listado.add(LaComarca);
@@ -24,6 +24,8 @@ public class CreacionAtraccion {
 		listado.add(Lothlorien);
 		listado.add(Erebor);
 		listado.add(BosqueNegro);
+		
+		return listado;
 	}
 	
 }
