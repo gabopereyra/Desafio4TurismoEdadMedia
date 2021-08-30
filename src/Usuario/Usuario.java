@@ -6,14 +6,14 @@ import Atraccion.*;
 public class Usuario {
 	private double presupuesto;
 	private double tiempoDisponible;
-	private String tipoAtraccionFavorita;
+	private TipoAtraccion tipoAtraccionFavorita;
 	
 	private List<Atraccion> atraccionesSugeridas;
 	private int indiceAtraccionesSugeridas = 0;
 
 	private List<Atraccion> itinerario;
 
-	public Usuario(double presupuesto, double tiempoDisponible, String tipoAtraccionFavorita) {
+	public Usuario(double presupuesto, double tiempoDisponible, TipoAtraccion tipoAtraccionFavorita) {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoAtraccionFavorita = tipoAtraccionFavorita;
@@ -31,7 +31,7 @@ public class Usuario {
 		return this.tiempoDisponible;
 	}
 
-	public String getTipoAtraccionFavorita() {
+	public TipoAtraccion getTipoAtraccionFavorita() {
 		return tipoAtraccionFavorita;
 	}
 
@@ -65,5 +65,13 @@ public class Usuario {
 		// ni plata, ni tiempo.
 		// PD: deberia retornar el itinerario , el tiempo utilizado y el dinero gastado
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
+				+ ", tipoAtraccionFavorita=" + tipoAtraccionFavorita + "]";
+	}
+	
+	
 
 }

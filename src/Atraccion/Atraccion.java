@@ -5,9 +5,9 @@ public class Atraccion implements Comparable <Atraccion> {
 	protected double costoAtraccion;
 	protected double tiempoNecesario;
 	protected int cupo;
-	private String tipoAtraccion;
+	private TipoAtraccion tipoAtraccion;
 
-	public Atraccion(String nombre, double costoAtraccion, double tiempoNecesario, int cupo, String tipoAtraccion) {
+	public Atraccion(String nombre, double costoAtraccion, double tiempoNecesario, int cupo, TipoAtraccion tipoAtraccion) {
 		this.nombre = nombre;
 		this.costoAtraccion = costoAtraccion;
 		this.tiempoNecesario = tiempoNecesario;
@@ -27,7 +27,7 @@ public class Atraccion implements Comparable <Atraccion> {
 		return tiempoNecesario;
 	}
 
-	public String getTipoAtraccion() {
+	public TipoAtraccion getTipoAtraccion() {
 		return tipoAtraccion;
 	}
 
