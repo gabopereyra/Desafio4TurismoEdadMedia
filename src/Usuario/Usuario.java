@@ -27,7 +27,7 @@ public class Usuario {
 		return this.presupuesto;
 	}
 	
-	public double gettiempoDisponible () {
+	public double getTiempoDisponible () {
 		return this.tiempoDisponible;
 	}
 
@@ -72,6 +72,26 @@ public class Usuario {
 				+ ", tipoAtraccionFavorita=" + tipoAtraccionFavorita + "]";
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(atraccionesSugeridas, indiceAtraccionesSugeridas, itinerario, presupuesto, tiempoDisponible,
+				tipoAtraccionFavorita);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(atraccionesSugeridas, other.atraccionesSugeridas)
+				&& indiceAtraccionesSugeridas == other.indiceAtraccionesSugeridas
+				&& Objects.equals(itinerario, other.itinerario)
+				&& Double.doubleToLongBits(presupuesto) == Double.doubleToLongBits(other.presupuesto)
+				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible)
+				&& tipoAtraccionFavorita == other.tipoAtraccionFavorita;
+	}
 }
