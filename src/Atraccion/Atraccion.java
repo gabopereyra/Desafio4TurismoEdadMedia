@@ -1,17 +1,21 @@
 package Atraccion;
 
+import java.util.Objects;
+
 public class Atraccion implements Comparable <Atraccion> {
 	protected String nombre;
 	protected double costoAtraccion;
 	protected double tiempoNecesario;
-	protected int cupo;
-	private TipoAtraccion tipoAtraccion;
+	protected int cupoMaximo;//Deberia ser static final
+	protected int cupoActual = 0;
+	private   TipoAtraccion tipoAtraccion;
 
-	public Atraccion(String nombre, double costoAtraccion, double tiempoNecesario, int cupo, TipoAtraccion tipoAtraccion) {
+	public Atraccion(String nombre, double costoAtraccion, double tiempoNecesario,
+			int cupoMaximo, TipoAtraccion tipoAtraccion) {
 		this.nombre = nombre;
 		this.costoAtraccion = costoAtraccion;
 		this.tiempoNecesario = tiempoNecesario;
-		this.cupo = cupo;
+		this.cupoMaximo = cupoMaximo;
 		this.tipoAtraccion = tipoAtraccion;
 	}
 
@@ -31,12 +35,37 @@ public class Atraccion implements Comparable <Atraccion> {
 		return tipoAtraccion;
 	}
 
-	public int getCupo() {
-		return cupo;
+	public int getCupoActual() {
+		return cupoActual;
+	}
+	
+	public int getCupoMaximo() {
+		return cupoMaximo;
 	}
 
 	public String getNombre() {
 		return nombre;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(costoAtraccion, cupoActual, cupoMaximo, nombre, tiempoNecesario, tipoAtraccion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atraccion other = (Atraccion) obj;
+		return Double.doubleToLongBits(costoAtraccion) == Double.doubleToLongBits(other.costoAtraccion)
+				&& cupoActual == other.cupoActual && cupoMaximo == other.cupoMaximo
+				&& Objects.equals(nombre, other.nombre)
+				&& Double.doubleToLongBits(tiempoNecesario) == Double.doubleToLongBits(other.tiempoNecesario)
+				&& tipoAtraccion == other.tipoAtraccion;
 	}
 
 	@Override 
@@ -51,6 +80,5 @@ public class Atraccion implements Comparable <Atraccion> {
 
 		return 0;
 	}
-	///PRUEBA
 
 }
