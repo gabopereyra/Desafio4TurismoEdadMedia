@@ -1,5 +1,8 @@
 package Usuario;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import Atraccion.*;
 
@@ -7,8 +10,8 @@ public class Usuario {
 	private double presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion tipoAtraccionFavorita;
-	
-	private List<Atraccion> atraccionesSugeridas;
+
+	private List<Atraccion> atraccionesSugeridas = new ArrayList<Atraccion>();
 	private int indiceAtraccionesSugeridas = 0;
 
 	private List<Atraccion> itinerario;
@@ -22,12 +25,12 @@ public class Usuario {
 	public Usuario() {
 
 	}
-	
-	public double getPresupuesto () {
+
+	public double getPresupuesto() {
 		return this.presupuesto;
 	}
-	
-	public double getTiempoDisponible () {
+
+	public double getTiempoDisponible() {
 		return this.tiempoDisponible;
 	}
 
@@ -36,10 +39,7 @@ public class Usuario {
 	}
 
 	public List<Atraccion> getAtraccionesSugeridas() {
-		if (indiceAtraccionesSugeridas != 0) {
-			return atraccionesSugeridas;
-		}
-		return null;
+		return atraccionesSugeridas;
 	}
 
 	public void descartarSugerencias() {
@@ -48,19 +48,21 @@ public class Usuario {
 
 	public void cargarSugerencias(List<Atraccion> atraccionesDisponibles) {
 		for (Atraccion i : atraccionesDisponibles) {
-			if (i.getCostoAtraccion() < this.presupuesto) {
-				if (i.getTiempoNecesario() < this.tiempoDisponible) {
-					atraccionesSugeridas.add(i);
-					
-				}
-			}
+			atraccionesSugeridas.add(i);
 		}
-		// Aca se llamaria un método de Atraccion que ordenaria las sugerencias...
-		// ...de mayor a menor precio. (Ej: atraccionesSugeridas.ordenar).
 	}
 
+	/*
+	 * public void cargarSugerencias(List<Atraccion> atraccionesDisponibles) { for
+	 * (Atraccion i : atraccionesDisponibles) { if (i.getCostoAtraccion() <
+	 * this.presupuesto) { if (i.getTiempoNecesario() < this.tiempoDisponible) {
+	 * atraccionesSugeridas.add(i);
+	 * 
+	 * } } } }
+	 */
+
 	public void llenarItinerario() {
-		// En éste método se evaluaria las atraccionesSugeridas.
+		// En Ã©ste mÃ©todo se evaluaria las atraccionesSugeridas.
 		// las que se acepten se guardaran en itinerario hasta que no quede ...
 		// ni plata, ni tiempo.
 		// PD: deberia retornar el itinerario , el tiempo utilizado y el dinero gastado
@@ -71,7 +73,7 @@ public class Usuario {
 		return "Usuario [presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
 				+ ", tipoAtraccionFavorita=" + tipoAtraccionFavorita + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(atraccionesSugeridas, indiceAtraccionesSugeridas, itinerario, presupuesto, tiempoDisponible,
@@ -94,4 +96,5 @@ public class Usuario {
 				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible)
 				&& tipoAtraccionFavorita == other.tipoAtraccionFavorita;
 	}
+	
 }
