@@ -1,24 +1,24 @@
 package Usuario;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import Atraccion.*;
 
 public class Usuario {
-	private double presupuesto;
-	private double tiempoDisponible;
-	private TipoAtraccion tipoAtraccionFavorita;
-
+	private double presupuesto = 0;
+	private double tiempoDisponible = 0;
+	private TipoAtraccion tipoAtraccionFavorita = TipoAtraccion.NoEspecificado;
+	private List<Atraccion> itinerario = new LinkedList<Atraccion>();
 	private List<Atraccion> atraccionesSugeridas = new ArrayList<Atraccion>();
-	private int indiceAtraccionesSugeridas = 0;
-
-	private List<Atraccion> itinerario;
 
 	public Usuario(double presupuesto, double tiempoDisponible, TipoAtraccion tipoAtraccionFavorita) {
-		this.presupuesto = presupuesto;
-		this.tiempoDisponible = tiempoDisponible;
+		if (esValorCorrecto(presupuesto))
+			this.presupuesto = presupuesto;
+		if (esValorCorrecto(tiempoDisponible))
+			this.tiempoDisponible = tiempoDisponible;
 		this.tipoAtraccionFavorita = tipoAtraccionFavorita;
 	}
 
@@ -26,24 +26,38 @@ public class Usuario {
 
 	}
 
+	public boolean esValorCorrecto(double valor) {
+		return valor > 0;
+	}
+
 	public double getPresupuesto() {
 		return this.presupuesto;
+	}
+
+	public void agregarMasPresupuesto(double presupuesto) {
+		if (esValorCorrecto(presupuesto))
+			this.presupuesto += presupuesto;
 	}
 
 	public double getTiempoDisponible() {
 		return this.tiempoDisponible;
 	}
 
+	public void agregarMasTiempoDisponible(double tiempoDisponible) {
+		if (esValorCorrecto(tiempoDisponible))
+			this.tiempoDisponible += tiempoDisponible;
+	}
+
 	public TipoAtraccion getTipoAtraccionFavorita() {
 		return tipoAtraccionFavorita;
 	}
 
-	public List<Atraccion> getAtraccionesSugeridas() {
-		return atraccionesSugeridas;
+	public void cambiarTipoAtraccionFavorita(TipoAtraccion tipoAtraccionFavorita) {
+		this.tipoAtraccionFavorita = tipoAtraccionFavorita;
 	}
 
-	public void descartarSugerencias() {
-		indiceAtraccionesSugeridas = 0;
+	public List<Atraccion> getAtraccionesSugeridas() {
+		return atraccionesSugeridas;
 	}
 
 	public void cargarSugerencias(List<Atraccion> atraccionesDisponibles) {
@@ -52,14 +66,9 @@ public class Usuario {
 		}
 	}
 
-	/*
-	 * public void cargarSugerencias(List<Atraccion> atraccionesDisponibles) { for
-	 * (Atraccion i : atraccionesDisponibles) { if (i.getCostoAtraccion() <
-	 * this.presupuesto) { if (i.getTiempoNecesario() < this.tiempoDisponible) {
-	 * atraccionesSugeridas.add(i);
-	 * 
-	 * } } } }
-	 */
+	public void descartarSugerencias() {
+		atraccionesSugeridas.removeAll(atraccionesSugeridas);
+	}
 
 	public void llenarItinerario() {
 		// En Ã©ste mÃ©todo se evaluaria las atraccionesSugeridas.
@@ -76,8 +85,7 @@ public class Usuario {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(atraccionesSugeridas, indiceAtraccionesSugeridas, itinerario, presupuesto, tiempoDisponible,
-				tipoAtraccionFavorita);
+		return Objects.hash(atraccionesSugeridas, itinerario, presupuesto, tiempoDisponible, tipoAtraccionFavorita);
 	}
 
 	@Override
@@ -90,11 +98,9 @@ public class Usuario {
 			return false;
 		Usuario other = (Usuario) obj;
 		return Objects.equals(atraccionesSugeridas, other.atraccionesSugeridas)
-				&& indiceAtraccionesSugeridas == other.indiceAtraccionesSugeridas
 				&& Objects.equals(itinerario, other.itinerario)
 				&& Double.doubleToLongBits(presupuesto) == Double.doubleToLongBits(other.presupuesto)
 				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible)
 				&& tipoAtraccionFavorita == other.tipoAtraccionFavorita;
 	}
-	
 }
