@@ -15,6 +15,10 @@ public class App {
 		
 		//Creacion de la lista de atracciones
 		List<Atraccion> listadoAtracciones = creacionAtraccion();
+		//Ordena la Lista de atracciones 
+		
+		Collections.sort(listadoAtracciones, new Sugerencia());
+
 		
 
 	}
