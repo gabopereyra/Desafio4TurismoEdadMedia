@@ -3,6 +3,7 @@ package Aplicacion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 import Atraccion.*;
 import Usuario.*;
@@ -15,6 +16,11 @@ public class App {
 		
 		//Creacion de la lista de atracciones
 		List<Atraccion> listadoAtracciones = creacionAtraccion();
+		//Ordena la Lista de atracciones 
+		
+		
+		Collections.sort(listadoAtracciones, new Sugerencia());
+
 		
 
 	}
