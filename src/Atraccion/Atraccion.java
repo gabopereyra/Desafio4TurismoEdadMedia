@@ -81,4 +81,13 @@ public class Atraccion implements Comparable <Atraccion> {
 		return 0;
 	}
 
+	@Override
+	public String toString() {
+		return "Atraccion [nombre=" + nombre + ", costoAtraccion=" + costoAtraccion + ", tiempoNecesario="
+				+ tiempoNecesario + ", cupoMaximo=" + cupoMaximo + ", cupoActual=" + cupoActual + ", tipoAtraccion="
+				+ tipoAtraccion + "]";
+	}
+
+	
+	
 }
