@@ -1,5 +1,9 @@
 package Aplicacion;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,63 +15,115 @@ import Usuario.*;
 public class App {
 
 	public static void main(String[] args) {
-		//Creacion de la lista de usuarios
+		// Creacion de la lista de usuarios
 		List<Usuario> listadoUsuarios = creacionUsuario();
-		
-		//Creacion de la lista de atracciones
-		List<Atraccion> listadoAtracciones = creacionAtraccion();
-		//Ordena la Lista de atracciones 
-		
-		
-		Collections.sort(listadoAtracciones, new Sugerencia());
 
+		// Creacion de la lista de atracciones
+		List<Atraccion> listadoAtracciones = creacionAtraccion();
+		// Ordena la Lista de atracciones
+
+		Collections.sort(listadoAtracciones, new Sugerencia());
 		
+
 
 	}
-	
-	
 
-	//Metodo creacion Usuario
+	// Metodo creacion Usuario
 	public static List<Usuario> creacionUsuario() {
 		List<Usuario> listado = new ArrayList<Usuario>();
-			
-		Usuario Eowyn = new Usuario(10d, 8d, TipoAtraccion.AVENTURA);
-		Usuario Gandalf = new Usuario(100d, 5d, TipoAtraccion.PAISAJE);
-		Usuario Sam = new Usuario(36d, 8d, TipoAtraccion.DESGUSTACION);
-		Usuario Galadriel = new Usuario(120d, 2d, TipoAtraccion.PAISAJE);
 
-		listado.add(Eowyn);
-		listado.add(Gandalf);
-		listado.add(Sam);
-		listado.add(Galadriel);
-			
-		return listado;
+		File archivo = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+
+		try {
+			archivo = new File("Usuario.txt");
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			String linea = br.readLine();
+
+			while ((linea != null)) {
+				listado.add(agregarUsuario(linea));
+				linea = br.readLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (fr != null) {
+					fr.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
-		
-	//Metodo creacion Aplicaciones
+
+		return listado;
+	}
+
+	public static Usuario agregarUsuario(String linea) {
+		String[] info = linea.split(",");
+
+		String nombre = info[0];
+		double monedas = Double.parseDouble(info[1]);
+		double tiempo = Double.parseDouble(info[2]);
+		TipoAtraccion actividad = TipoAtraccion.valueOf(info[3]);
+
+		Usuario user = new Usuario(nombre, monedas, tiempo, actividad);
+
+		return user;
+	}
+
+///APLICACIONES
 	public static List<Atraccion> creacionAtraccion() {
 		List<Atraccion> listado = new ArrayList<Atraccion>();
-		
-		Atraccion Moria = new Atraccion("Moria", 10.0, 2.0, 6, TipoAtraccion.AVENTURA);
-		Atraccion MinasTirith = new Atraccion("Minas Tirith", 5.0, 2.5, 25, TipoAtraccion.PAISAJE);
-		Atraccion LaComarca = new Atraccion("La Comarca", 3.0, 6.5, 150, TipoAtraccion.DESGUSTACION);
-		Atraccion Mordor = new Atraccion("Mordor", 25.0, 3.0, 4, TipoAtraccion.AVENTURA);
-		Atraccion AbismoDeHelm = new Atraccion("Abismo De Helm", 5.0, 2.0, 15, TipoAtraccion.PAISAJE);
-		Atraccion Lothlorien = new Atraccion("Lothlorien", 35.0, 1.0, 30, TipoAtraccion.DESGUSTACION);
-		Atraccion Erebor = new Atraccion("Erebor", 12.0, 3.0, 32, TipoAtraccion.PAISAJE);
-		Atraccion BosqueNegro = new Atraccion("BosqueNegro", 3.0, 4.0, 12, TipoAtraccion.AVENTURA);
 
-		listado.add(Moria);
-		listado.add(MinasTirith);
-		listado.add(LaComarca);
-		listado.add(Mordor);
-		listado.add(AbismoDeHelm);
-		listado.add(Lothlorien);
-		listado.add(Erebor);
-		listado.add(BosqueNegro);
-			
-		return listado;
+		File archivo = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+
+		try {
+			archivo = new File("Atraccion.txt");
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			String linea = br.readLine();
+
+			while ((linea != null)) {
+				listado.add(agregarAtraccion(linea));
+				linea = br.readLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (fr != null) {
+					fr.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
+
+		return listado;
+	}
+
+	public static Atraccion agregarAtraccion(String linea) {
+		String[] info = linea.split(",");
+
+
+		String nombre = info[0];
+		double costo = Double.parseDouble(info[1]);
+		double tiempo = Double.parseDouble(info[2]);
+		int cupo = (int) Integer.parseInt(info[3]);
+		TipoAtraccion actividad = TipoAtraccion.valueOf(info[4]);
+
+		Atraccion atraccion = new Atraccion(nombre, costo, tiempo, cupo, actividad);
+
+		return atraccion;
+	}
+
 }
-
-
