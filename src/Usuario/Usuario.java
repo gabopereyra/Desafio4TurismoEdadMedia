@@ -87,10 +87,13 @@ public class Usuario {
 		// PD: deberia retornar el itinerario , el tiempo utilizado y el dinero gastado
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Usuario [presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
-				+ ", tipoAtraccionFavorita=" + tipoAtraccionFavorita + "]";
+		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
+				+ ", tipoAtraccionFavorita=" + tipoAtraccionFavorita + ", itinerario=" + itinerario
+				+ ", atraccionesSugeridas=" + atraccionesSugeridas + "]";
 	}
 
 	@Override
