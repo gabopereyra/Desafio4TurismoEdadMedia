@@ -1,0 +1,8 @@
+Moria,10.0,2.0,6,AVENTURA
+Minas Tirith,5.0,2.5,25,PAISAJE
+La Comarca,3.0,6.5,150,DEGUSTACION
+Mordor,25.0,3.0,4,AVENTURA
+Abismo De Helm,5.0,2.0,15,PAISAJE
+Lothlorien,35.0,1.0,30,DEGUSTACION
+Erebor,12.0,3.0,32,PAISAJE
+Bosque Negro,3.0,4.0,12,AVENTURA
