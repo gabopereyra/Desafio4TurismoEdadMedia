@@ -8,13 +8,15 @@ import java.util.LinkedList;
 import Atraccion.*;
 
 public class Usuario {
+	private String nombre;
 	private double presupuesto = 0;
 	private double tiempoDisponible = 0;
 	private TipoAtraccion tipoAtraccionFavorita = TipoAtraccion.NoEspecificado;
 	private List<Atraccion> itinerario = new LinkedList<Atraccion>();
 	private List<Atraccion> atraccionesSugeridas = new ArrayList<Atraccion>();
 
-	public Usuario(double presupuesto, double tiempoDisponible, TipoAtraccion tipoAtraccionFavorita) {
+	public Usuario(String nombre, double presupuesto, double tiempoDisponible, TipoAtraccion tipoAtraccionFavorita) {
+		this.nombre = nombre;
 		if (esValorCorrecto(presupuesto))
 			this.presupuesto = presupuesto;
 		if (esValorCorrecto(tiempoDisponible))
@@ -24,6 +26,14 @@ public class Usuario {
 
 	public Usuario() {
 
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public boolean esValorCorrecto(double valor) {
