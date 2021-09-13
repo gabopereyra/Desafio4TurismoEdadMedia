@@ -15,6 +15,10 @@ import Usuario.*;
 public class App {
 
 	public static void main(String[] args) {
+
+		String entrada = null;
+		Scanner scan = new Scanner(System.in);
+
 		// Creacion de la lista de usuarios
 		List<Usuario> listadoUsuarios = creacionUsuario();
 
@@ -22,9 +26,19 @@ public class App {
 		List<Atraccion> listadoAtracciones = creacionAtraccion();
 		// Ordena la Lista de atracciones
 
-		Collections.sort(listadoAtracciones, new Sugerencia());
-		
+		// Collections.sort(listadoAtracciones, new Sugerencia());
 
+		while (true) {
+
+			System.out.println("Ingrese salir para finalizar programa.");
+			entrada = scan.next();
+
+			if (entrada.equals("salir"))
+				break;
+		}
+
+		scan.close();
+		System.out.println("Programa Finalizado");
 
 	}
 
@@ -44,6 +58,7 @@ public class App {
 			String linea = br.readLine();
 
 			while ((linea != null)) {
+				// System.out.println(linea);
 				listado.add(agregarUsuario(linea));
 				linea = br.readLine();
 			}
@@ -92,6 +107,7 @@ public class App {
 			String linea = br.readLine();
 
 			while ((linea != null)) {
+				// System.out.println(linea);
 				listado.add(agregarAtraccion(linea));
 				linea = br.readLine();
 			}
@@ -113,7 +129,6 @@ public class App {
 
 	public static Atraccion agregarAtraccion(String linea) {
 		String[] info = linea.split(",");
-
 
 		String nombre = info[0];
 		double costo = Double.parseDouble(info[1]);
