@@ -17,7 +17,7 @@ public class TestUsuario {
 		Usuario hobbit1 = new Usuario();
 		assertNotNull(hobbit1);
 
-		Usuario hobbit2 = new Usuario(100, 2, TipoAtraccion.AVENTURA);
+		Usuario hobbit2 = new Usuario("Thain", 100, 2, TipoAtraccion.AVENTURA);
 		assertNotNull(hobbit2);
 	}
 
@@ -42,7 +42,7 @@ public class TestUsuario {
 
 	@Test
 	public void comprobacionDeCreacionConParametrosTest() {
-		Usuario hobbit1 = new Usuario(100, 2, TipoAtraccion.AVENTURA);
+		Usuario hobbit1 = new Usuario("Thain", 100, 2, TipoAtraccion.AVENTURA);
 
 		double presupuestoEsperado = 100;
 		double presupuestoObtenido = hobbit1.getPresupuesto();
@@ -82,7 +82,7 @@ public class TestUsuario {
 
 	@Test
 	public void agregarUnaAtraccionSugeridaTest() {
-		Usuario hobbit1 = new Usuario(100, 8, TipoAtraccion.PAISAJE);
+		Usuario hobbit1 = new Usuario("Thain", 100, 8, TipoAtraccion.PAISAJE);
 		Atraccion atraccion1 = new Atraccion("Campos", 30, 4, 60, TipoAtraccion.PAISAJE);
 
 		List<Atraccion> lista1 = new ArrayList<Atraccion>();
@@ -94,7 +94,7 @@ public class TestUsuario {
 
 	@Test
 	public void agregarVariasAtraccionesSugeridasTest() {
-		Usuario hobbit1 = new Usuario(100, 8, TipoAtraccion.PAISAJE);
+		Usuario hobbit1 = new Usuario("Thain", 100, 8, TipoAtraccion.PAISAJE);
 
 		Atraccion atraccion1 = new Atraccion("Campos", 30, 4, 60, TipoAtraccion.PAISAJE);
 		Atraccion atraccion2 = new Atraccion("Riscos", 20, 3, 60, TipoAtraccion.PAISAJE);
@@ -112,7 +112,7 @@ public class TestUsuario {
 
 	@Test
 	public void descartarAtraccionesSuegeridasTest() {
-		Usuario hobbit1 = new Usuario(100, 8, TipoAtraccion.PAISAJE);
+		Usuario hobbit1 = new Usuario("Thain", 100, 8, TipoAtraccion.PAISAJE);
 		Atraccion atraccion1 = new Atraccion("Campos", 30, 4, 60, TipoAtraccion.PAISAJE);
 		List<Atraccion> lista1 = new ArrayList<Atraccion>();
 		lista1.add(atraccion1);
