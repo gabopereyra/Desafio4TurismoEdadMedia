@@ -1,5 +1,10 @@
 package Atraccion;
 
 public enum TipoAtraccion {
-	AVENTURA, PAISAJE, DEGUSTACION, NoEspecificado
+	
+	AVENTURA, 
+	PAISAJE, 
+	DEGUSTACION, 
+	NoEspecificado
+	
 }
