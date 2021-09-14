@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Collections;
 
-import Atraccion.*;
 import Usuario.*;
+import Atraccion.*;
+import Promocion.*;
 
 public class App {
 
@@ -40,7 +40,10 @@ public class App {
 
 		// Creacion de la lista de atracciones
 		List<Atraccion> listadoAtracciones = creacionAtraccion();
-		
+
+		// Creacion de la lista de promociones
+		List<Promocion> listadoPromociones = creacionPromocion();
+
 		// Ordena la Lista de atracciones
 		// Collections.sort(listadoAtracciones, new Sugerencia());
 
@@ -76,7 +79,8 @@ public class App {
 		}
 	}
 
-	// Metodo creacion Usuario
+//----------------------------------------------------------------------------//
+// Metodo creacion Usuario
 	public static List<Usuario> creacionUsuario() {
 		List<Usuario> listado = new ArrayList<Usuario>();
 
@@ -125,7 +129,8 @@ public class App {
 		return user;
 	}
 
-///APLICACIONES
+//----------------------------------------------------------------------------//
+//Metodo creacion Atraccion
 	public static List<Atraccion> creacionAtraccion() {
 		List<Atraccion> listado = new ArrayList<Atraccion>();
 
@@ -173,6 +178,59 @@ public class App {
 		Atraccion atraccion = new Atraccion(nombre, costo, tiempo, cupo, actividad);
 
 		return atraccion;
+	}
+
+//----------------------------------------------------------------------------//
+//Metodo creacion Promocion
+	public static List<Promocion> creacionPromocion() {
+		List<Promocion> listado = new ArrayList<Promocion>();
+
+		File archivo = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+
+		try {
+			archivo = new File("Promocion.txt");
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			String linea = br.readLine();
+
+			while ((linea != null)) {
+				// System.out.println(linea);
+				listado.add(agregarPromocion(linea));
+				linea = br.readLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (fr != null) {
+					fr.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return listado;
+	}
+
+	public static Promocion agregarPromocion(String linea) {
+		String[] info = linea.split(",");
+
+		String nombre = info[0];
+		int tipo = (int) Integer.parseInt(info[1]);
+		double costo = Double.parseDouble(info[2]);
+		double tiempo = Double.parseDouble(info[3]);
+		String atraccion1 = info[4];
+		String atraccion2 = info[5];
+		String beneficio = info[6];
+
+		Promocion promocion = new Promocion(nombre, tipo, costo, tiempo, atraccion1, atraccion2, beneficio);
+
+		return promocion;
 	}
 
 }
