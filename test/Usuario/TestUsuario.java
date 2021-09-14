@@ -124,5 +124,10 @@ public class TestUsuario {
 		System.out.println(hobbit1.getAtraccionesSugeridas());
 		// agregar equals, y borrar syso
 	}
-
+	
+	@Test
+	public void mostrarUsuario() {
+		Usuario hobbit1 = new Usuario("Thain", 100, 8, TipoAtraccion.PAISAJE);
+		System.out.println(hobbit1.toString());
+	}
 }
