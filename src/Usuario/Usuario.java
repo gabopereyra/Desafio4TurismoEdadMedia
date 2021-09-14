@@ -81,7 +81,7 @@ public class Usuario {
 	}
 
 	public void llenarItinerario() {
-		// En Ã©ste mÃ©todo se evaluaria las atraccionesSugeridas.
+		// En ÃƒÂ©ste mÃƒÂ©todo se evaluaria las atraccionesSugeridas.
 		// las que se acepten se guardaran en itinerario hasta que no quede ...
 		// ni plata, ni tiempo.
 		// PD: deberia retornar el itinerario , el tiempo utilizado y el dinero gastado
