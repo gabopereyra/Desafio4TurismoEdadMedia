@@ -66,7 +66,7 @@ public class App {
 				consola.mostrarLasAtracciones(listadoAtracciones);
 				break;
 			case 3:
-				// mostrar las promociones
+				consola.mostrarLasPromociones(listadoPromociones);
 				break;
 			case 9:
 				consola.salir();
@@ -234,3 +234,22 @@ public class App {
 	}
 
 }
+
+/*
+ * faltaria cargar el "itinerario" de los Usuarios, cargando previamente
+ * "atraccionesSugeridas"
+ */
+
+/*
+ * faltaria crear un archivo con todos lso datos de los usuarios y sus
+ * itinerarios completos
+ */
+
+/* faltaria añadir mas promociones distintas */
+
+/*
+ * posteriormente modificar las Clases Promocion y App para que, en vez de pasar
+ * Strings con los nombres y hacer una comprobacion con las Atracciones
+ * cargadas; pase directamente las Atracciones que interviene y calcular segun
+ * el tipo los costos, los tiempos y los beneficios otorgados;
+ */
