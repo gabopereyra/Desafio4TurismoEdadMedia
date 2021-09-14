@@ -33,7 +33,7 @@ public class App {
 		int entradaI = 0;
 		//String entradaS = null;
 		boolean ejecutar = true;
-		Interface dibujar = new Interface();
+		Interface consola = new Interface();
 
 		// Creacion de la lista de usuarios
 		List<Usuario> listadoUsuarios = creacionUsuario();
@@ -43,11 +43,12 @@ public class App {
 		// Ordena la Lista de atracciones
 
 		// Collections.sort(listadoAtracciones, new Sugerencia());
+		
+		consola.inicio();
 
 		while (ejecutar) {
 
-			dibujar.menu();
-
+			consola.menu();
 			try {
 				entradaI = ingresarDatoInt();
 			} catch (NumberFormatException e) {
@@ -56,9 +57,7 @@ public class App {
 
 			switch (entradaI) {
 			case 1:
-				for (Usuario i : listadoUsuarios) {
-					System.out.println(i.toString());
-				}
+				consola.mostrarTodosLosUsuarios(listadoUsuarios);
 				break;
 			case 2:
 				for (Atraccion i : listadoAtracciones) {
@@ -69,7 +68,7 @@ public class App {
 				// mostrar las promociones
 				break;
 			case 9:
-				dibujar.salir();
+				consola.salir();
 				ejecutar = false;
 				break;
 			default:
