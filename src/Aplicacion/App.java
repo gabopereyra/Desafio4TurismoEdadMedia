@@ -14,10 +14,26 @@ import Usuario.*;
 
 public class App {
 
+	@SuppressWarnings("resource")
+	private static String ingresarDatoStr() {
+		Scanner scan = new Scanner(System.in);
+		String datoStr = scan.nextLine();
+		return datoStr;
+	}
+
+	@SuppressWarnings("resource")
+	private static int ingresarDatoInt() {
+		Scanner scan = new Scanner(System.in);
+		int datoInt = scan.nextInt();
+		return datoInt;
+	}
+
 	public static void main(String[] args) {
 
-		String entrada = null;
-		Scanner scan = new Scanner(System.in);
+		int entradaI = 0;
+		//String entradaS = null;
+		boolean ejecutar = true;
+		Interface dibujar = new Interface();
 
 		// Creacion de la lista de usuarios
 		List<Usuario> listadoUsuarios = creacionUsuario();
@@ -28,18 +44,38 @@ public class App {
 
 		// Collections.sort(listadoAtracciones, new Sugerencia());
 
-		while (true) {
+		while (ejecutar) {
 
-			System.out.println("Ingrese salir para finalizar programa.");
-			entrada = scan.next();
+			dibujar.menu();
 
-			if (entrada.equals("salir"))
+			try {
+				entradaI = ingresarDatoInt();
+			} catch (NumberFormatException e) {
+				System.err.println("dato invalido. Por favor ingrese un numero.");
+			}
+
+			switch (entradaI) {
+			case 1:
+				for (Usuario i : listadoUsuarios) {
+					System.out.println(i.toString());
+				}
 				break;
+			case 2:
+				for (Atraccion i : listadoAtracciones) {
+					System.out.println(i.toString());
+				}
+				break;
+			case 3:
+				// mostrar las promociones
+				break;
+			case 9:
+				dibujar.salir();
+				ejecutar = false;
+				break;
+			default:
+				break;
+			}
 		}
-
-		scan.close();
-		System.out.println("Programa Finalizado");
-
 	}
 
 	// Metodo creacion Usuario
