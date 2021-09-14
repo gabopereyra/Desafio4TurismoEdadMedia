@@ -31,7 +31,7 @@ public class App {
 	public static void main(String[] args) {
 
 		int entradaI = 0;
-		//String entradaS = null;
+		// String entradaS = null;
 		boolean ejecutar = true;
 		Interface consola = new Interface();
 
@@ -40,10 +40,10 @@ public class App {
 
 		// Creacion de la lista de atracciones
 		List<Atraccion> listadoAtracciones = creacionAtraccion();
-		// Ordena la Lista de atracciones
-
-		// Collections.sort(listadoAtracciones, new Sugerencia());
 		
+		// Ordena la Lista de atracciones
+		// Collections.sort(listadoAtracciones, new Sugerencia());
+
 		consola.inicio();
 
 		while (ejecutar) {
@@ -57,12 +57,10 @@ public class App {
 
 			switch (entradaI) {
 			case 1:
-				consola.mostrarTodosLosUsuarios(listadoUsuarios);
+				consola.mostrarLosUsuarios(listadoUsuarios);
 				break;
 			case 2:
-				for (Atraccion i : listadoAtracciones) {
-					System.out.println(i.toString());
-				}
+				consola.mostrarLasAtracciones(listadoAtracciones);
 				break;
 			case 3:
 				// mostrar las promociones
@@ -72,6 +70,7 @@ public class App {
 				ejecutar = false;
 				break;
 			default:
+				consola.noDisponible();
 				break;
 			}
 		}
