@@ -68,6 +68,10 @@ public class App {
 			case 3:
 				consola.mostrarLasPromociones(listadoPromociones);
 				break;
+			case 4:
+				consola.cargarSugerencias(listadoUsuarios, listadoSugerencias);
+					
+					
 			case 9:
 				consola.salir();
 				ejecutar = false;
@@ -78,6 +82,39 @@ public class App {
 			}
 		}
 	}
+	// ----------------------------------------------------------------------------//
+	// Metodo creacion sugerencias
+
+	private static List<Sugerencias> creacionSugerencias(List<Usuario> listadoUsuarios,
+			List<Atraccion> listadoAtracciones) {
+		List<Sugerencias> listado = new ArrayList<Sugerencias>();
+
+		for (Usuario i : listadoUsuarios) {
+			for (Atraccion x : listadoAtracciones) {
+				if (i.getPresupuesto() >= x.getCostoAtraccion() && i.getTiempoDisponible() >= x.getTiempoNecesario()
+						&& i.getTipoAtraccionFavorita() == x.getTipoAtraccion() && x.getCupoMaximo() > 0) {
+					listado.add(agregarSugerencia(x));
+
+				}
+			}
+		}
+
+		return listado;
+	}
+
+	private static Sugerencias agregarSugerencia(Atraccion x) {
+
+		String nombre = x.getNombre();
+		double costoAtraccion = x.getCostoAtraccion();
+		double tiempoNecesario = x.getTiempoNecesario();
+		double cupoMaximo = x.getCupoMaximo();
+		TipoAtraccion actividad = x.getTipoAtraccion();
+
+		Sugerencias sugerida = new Atraccion(nombre, costoAtraccion, tiempoNecesario, (int) cupoMaximo, actividad);
+
+		return sugerida;
+	}
+
 
 //----------------------------------------------------------------------------//
 // Metodo creacion Usuario
