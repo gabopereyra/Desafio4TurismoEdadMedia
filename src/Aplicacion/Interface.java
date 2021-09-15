@@ -24,7 +24,7 @@ public class Interface {
 		System.out.println("|| 1 -> para mostrar los usuarios cargados.        ||");
 		System.out.println("|| 2 -> para mostrar las atracciones cargadas.     ||");
 		System.out.println("|| 3 -> para mostrar las promociones cargadas.     ||");
-		System.out.println("|| 4 -> llenar los Itinerarios de los usuarios.    ||");
+		System.out.println("|| 4 -> para mostrar las sugerencias.              ||");
 		System.out.println("|| 5 -> generar Archivo con todos los datos.       ||");
 		System.out.println("||                                                 ||");
 		System.out.println("|| 9 -> para finalizar el programa.                ||");
