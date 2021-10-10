@@ -31,7 +31,6 @@ public class App {
 	public static void main(String[] args) {
 
 		int entradaI = 0;
-		// String entradaS = null;
 		boolean ejecutar = true;
 		Interface consola = new Interface();
 
@@ -45,7 +44,7 @@ public class App {
 		List<Promocion> listadoPromociones = creacionPromocion();
 
 		// Ordena la Lista de atracciones
-		// Collections.sort(listadoAtracciones, new Sugerencia());
+		//Collections.sort(listadoAtracciones, new Sugerencia());
 
 		consola.inicio();
 
@@ -69,9 +68,8 @@ public class App {
 				consola.mostrarLasPromociones(listadoPromociones);
 				break;
 			case 4:
-				consola.cargarSugerencias(listadoUsuarios, listadoSugerencias);
-					
-					
+				//consola.cargarSugerencias(listadoUsuarios, listadoSugerencias);
+				break;
 			case 9:
 				consola.salir();
 				ejecutar = false;
@@ -82,8 +80,10 @@ public class App {
 			}
 		}
 	}
-	// ----------------------------------------------------------------------------//
+//----------------------------------------------------------------------------//
+	/*
 	// Metodo creacion sugerencias
+	
 
 	private static List<Sugerencias> creacionSugerencias(List<Usuario> listadoUsuarios,
 			List<Atraccion> listadoAtracciones) {
@@ -115,7 +115,7 @@ public class App {
 		return sugerida;
 	}
 
-
+*/
 //----------------------------------------------------------------------------//
 // Metodo creacion Usuario
 	public static List<Usuario> creacionUsuario() {
@@ -271,22 +271,3 @@ public class App {
 	}
 
 }
-
-/*
- * faltaria cargar el "itinerario" de los Usuarios, cargando previamente
- * "atraccionesSugeridas"
- */
-
-/*
- * faltaria crear un archivo con todos lso datos de los usuarios y sus
- * itinerarios completos
- */
-
-/* faltaria añadir mas promociones distintas */
-
-/*
- * posteriormente modificar las Clases Promocion y App para que, en vez de pasar
- * Strings con los nombres y hacer una comprobacion con las Atracciones
- * cargadas; pase directamente las Atracciones que interviene y calcular segun
- * el tipo los costos, los tiempos y los beneficios otorgados;
- */
