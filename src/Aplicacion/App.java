@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import Usuario.*;
-import Atraccion.*;
-import Promocion.*;
+import Clases.*;
 
 public class App {
 

@@ -1,11 +1,9 @@
-package Usuario;
+package Clases;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-import Atraccion.*;
 
 public class Usuario {
 	private String nombre;

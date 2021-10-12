@@ -1,4 +1,4 @@
-package Atraccion;
+package Clases;
 
 public enum TipoAtraccion {
 	

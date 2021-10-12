@@ -1,4 +1,4 @@
-package Atraccion;
+package Clases;
 
 import static org.junit.Assert.*;
 

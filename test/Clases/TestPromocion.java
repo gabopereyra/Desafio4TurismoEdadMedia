@@ -1,4 +1,4 @@
-package Promocion;
+package Clases;
 
 import static org.junit.Assert.*;
 
