@@ -1,10 +1,8 @@
-package Promocion;
+package Clases;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.ArrayList;
-
-import Atraccion.Atraccion;
 
 public class Promocion {
 

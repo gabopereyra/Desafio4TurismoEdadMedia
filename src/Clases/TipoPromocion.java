@@ -1,4 +1,4 @@
-package Promocion;
+package Clases;
 
 public enum TipoPromocion {
 

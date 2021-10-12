@@ -2,9 +2,9 @@ package Aplicacion;
 
 import java.util.List;
 
-import Usuario.Usuario;
-import Atraccion.Atraccion;
-import Promocion.Promocion;
+import Clases.Usuario;
+import Clases.Atraccion;
+import Clases.Promocion;
 
 public class Interface {
 
@@ -106,37 +106,5 @@ public class Interface {
 		System.out.println("||=================================================||");
 		System.out.println();
 	}
-	
-	public void cargarSugerencias(List<Usuario> usuario, List<Sugerencias> listadoSugerencias) {
-		// TODO Auto-generated method stub
-		
-		System.out.println();
-		System.out.println("||=================================================||");
-		System.out.println("||=================================================||");
-
-		System.out.println("|| Mostrando todas las Sugerencias para");
-
-		for (Sugerencias x : listadoSugerencias) {
-
-			mostrarSugerencias(x);
-		}
-
-		System.out.println("||=================================================||");
-		System.out.println();
-
-	}
-
-	private void mostrarSugerencias(Sugerencias x) {
-		// TODO Auto-generated method stub
-		System.out.println("||=================================================||");
-		System.out.println("|| Nombre ->  " + ((Atraccion) x).getNombre());
-		System.out.println("|| Tipo   ->  " + ((Atraccion) x).getTipoAtraccion());
-		System.out.println(
-				"|| Costo  ->                                 $" + ((Atraccion) x).getCostoAtraccion() + " ||");
-		System.out.println(
-				"|| Duracion de la Atraccion ->           " + ((Atraccion) x).getTiempoNecesario() + " Horas ||");
-		System.out.println("|| Cupo Disponible	    ->                  " + ((Atraccion) x).getCupoMaximo() + " ||");
-	}
-
 
 }

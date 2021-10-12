@@ -1,4 +1,4 @@
-package Atraccion;
+package Clases;
 
 import java.util.Objects;
 
