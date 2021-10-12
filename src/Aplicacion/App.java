@@ -13,14 +13,7 @@ import Clases.*;
 public class App {
 
 	@SuppressWarnings("resource")
-	private static String ingresarDatoStr() {
-		Scanner scan = new Scanner(System.in);
-		String datoStr = scan.nextLine();
-		return datoStr;
-	}
-
-	@SuppressWarnings("resource")
-	private static int ingresarDatoInt() {
+	private static int ingresarDato() {
 		Scanner scan = new Scanner(System.in);
 		int datoInt = scan.nextInt();
 		return datoInt;
@@ -30,7 +23,7 @@ public class App {
 
 		int entradaI = 0;
 		boolean ejecutar = true;
-		Interface consola = new Interface();
+		Pantalla pantalla = new Pantalla();
 
 		// Creacion de la lista de usuarios
 		List<Usuario> listadoUsuarios = creacionUsuario();
@@ -44,36 +37,36 @@ public class App {
 		// Ordena la Lista de atracciones
 		//Collections.sort(listadoAtracciones, new Sugerencia());
 
-		consola.inicio();
+		pantalla.inicio();
 
 		while (ejecutar) {
 
-			consola.menu();
+			pantalla.menu();
 			try {
-				entradaI = ingresarDatoInt();
+				entradaI = (Integer) ingresarDato();
 			} catch (NumberFormatException e) {
 				System.err.println("dato invalido. Por favor ingrese un numero.");
 			}
 
 			switch (entradaI) {
 			case 1:
-				consola.mostrarLosUsuarios(listadoUsuarios);
+				pantalla.mostrarLosUsuarios(listadoUsuarios);
 				break;
 			case 2:
-				consola.mostrarLasAtracciones(listadoAtracciones);
+				pantalla.mostrarLasAtracciones(listadoAtracciones);
 				break;
 			case 3:
-				consola.mostrarLasPromociones(listadoPromociones);
+				pantalla.mostrarLasPromociones(listadoPromociones);
 				break;
 			case 4:
 				//consola.cargarSugerencias(listadoUsuarios, listadoSugerencias);
 				break;
 			case 9:
-				consola.salir();
+				pantalla.salir();
 				ejecutar = false;
 				break;
 			default:
-				consola.noDisponible();
+				pantalla.noDisponible();
 				break;
 			}
 		}
