@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class TestUsuario {
+public class UsuarioTest {
 
 	@Test
 	public void creacionDeUsuarioTest() {
