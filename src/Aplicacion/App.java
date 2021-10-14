@@ -13,7 +13,14 @@ import Clases.*;
 public class App {
 
 	@SuppressWarnings("resource")
-	private static int ingresarDato() {
+	private static String ingresarDatoStr() {
+		Scanner scan = new Scanner(System.in);
+		String datoStr = scan.next();
+		return datoStr;
+	}
+
+	@SuppressWarnings("resource")
+	private static int ingresarDatoInt() {
 		Scanner scan = new Scanner(System.in);
 		int datoInt = scan.nextInt();
 		return datoInt;
@@ -21,32 +28,65 @@ public class App {
 
 	public static void main(String[] args) {
 
-		int entradaI = 0;
-		boolean ejecutar = true;
+		int index = 0;		//se usa para saber la posicion del usuario buscado
+		char mode = 0;		//se usa para evaluar que accion tomar segun el nombre ingresado
+		String entradaS;
 		Pantalla pantalla = new Pantalla();
 
-		// Creacion de la lista de usuarios
 		List<Usuario> listadoUsuarios = creacionUsuario();
-
-		// Creacion de la lista de atracciones
 		List<Atraccion> listadoAtracciones = creacionAtraccion();
-
-		// Creacion de la lista de promociones
 		List<Promocion> listadoPromociones = creacionPromocion();
 
-		// Ordena la Lista de atracciones
-		//Collections.sort(listadoAtracciones, new Sugerencia());
+		pantalla.saludo();
 
-		pantalla.inicio();
+		while (true) {
 
-		while (ejecutar) {
+			pantalla.ingresoS();
+			entradaS = ingresarDatoStr();
+			pantalla.barra();
 
-			pantalla.menu();
-			try {
-				entradaI = (Integer) ingresarDato();
-			} catch (NumberFormatException e) {
-				System.err.println("dato invalido. Por favor ingrese un numero.");
+			if (entradaS.equals("admin")) {
+				mode = 1;
+			} else {
+				int count = 0;
+				for (Usuario usuario : listadoUsuarios) {
+					if (usuario.getNombre().equals(entradaS)) {
+						index = count;
+						mode = 2;
+						break;
+					}
+					count++;
+				}
 			}
+
+			switch (mode) {
+			case 0:
+				pantalla.ingresoStrInvalido();
+				break;
+
+			case 1: // admin
+				ingresoDeAdministrador(listadoUsuarios, listadoAtracciones, listadoPromociones);
+				break;
+
+			case 2:// user
+				ingresoDeUsuario(index);
+				break;
+
+			}
+
+		}
+	}
+
+	public static void ingresoDeAdministrador(List<Usuario> listadoUsuarios, 
+			List<Atraccion> listadoAtracciones, List<Promocion> listadoPromociones) {
+
+		boolean salir = false;
+		Pantalla pantalla = new Pantalla();
+
+		while (!salir) {
+			pantalla.menuAdmin();
+
+			int entradaI = (Integer) ingresarDatoInt();
 
 			switch (entradaI) {
 			case 1:
@@ -59,56 +99,30 @@ public class App {
 				pantalla.mostrarLasPromociones(listadoPromociones);
 				break;
 			case 4:
-				//consola.cargarSugerencias(listadoUsuarios, listadoSugerencias);
+				//LLenar Itinerarios manualmente
+				break;
+			case 5:
+				//LLenar Itinerarios automaticamente
 				break;
 			case 9:
 				pantalla.salir();
-				ejecutar = false;
+				salir = true;
 				break;
 			default:
-				pantalla.noDisponible();
+				pantalla.ingresoStrInvalido();
 				break;
 			}
+
 		}
 	}
-//----------------------------------------------------------------------------//
-	/*
-	// Metodo creacion sugerencias
 	
-
-	private static List<Sugerencias> creacionSugerencias(List<Usuario> listadoUsuarios,
-			List<Atraccion> listadoAtracciones) {
-		List<Sugerencias> listado = new ArrayList<Sugerencias>();
-
-		for (Usuario i : listadoUsuarios) {
-			for (Atraccion x : listadoAtracciones) {
-				if (i.getPresupuesto() >= x.getCostoAtraccion() && i.getTiempoDisponible() >= x.getTiempoNecesario()
-						&& i.getTipoAtraccionFavorita() == x.getTipoAtraccion() && x.getCupoMaximo() > 0) {
-					listado.add(agregarSugerencia(x));
-
-				}
-			}
-		}
-
-		return listado;
+	public static void ingresoDeUsuario(int index) {
+		//aca se tomaria un usuario en particular, ayudado con el index se ...
+		//deberia saber en que posicion se encuentra el busado.
+		
 	}
 
-	private static Sugerencias agregarSugerencia(Atraccion x) {
-
-		String nombre = x.getNombre();
-		double costoAtraccion = x.getCostoAtraccion();
-		double tiempoNecesario = x.getTiempoNecesario();
-		double cupoMaximo = x.getCupoMaximo();
-		TipoAtraccion actividad = x.getTipoAtraccion();
-
-		Sugerencias sugerida = new Atraccion(nombre, costoAtraccion, tiempoNecesario, (int) cupoMaximo, actividad);
-
-		return sugerida;
-	}
-
-*/
-//----------------------------------------------------------------------------//
-// Metodo creacion Usuario
+//Metodo creacion Usuario
 	public static List<Usuario> creacionUsuario() {
 		List<Usuario> listado = new ArrayList<Usuario>();
 
@@ -260,5 +274,4 @@ public class App {
 
 		return promocion;
 	}
-
 }
