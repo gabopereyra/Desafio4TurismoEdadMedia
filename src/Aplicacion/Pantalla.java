@@ -8,14 +8,42 @@ import Clases.Promocion;
 
 public class Pantalla {
 
-	public void inicio() {
-		System.out.println("||=================================================||");
-		System.out.println("||(digite el numero de la opcion correspondiente...||");
-		System.out.println("||(luego presiones la tecla ENTER)                 ||");
+	public void barra() {
 		System.out.println("||=================================================||");
 	}
 
-	public void menu() {
+	public void saludo() {
+		System.out.println("||=================================================||");
+		System.out.println("||                                                 ||");
+		System.out.println("||                  Bienvenido.                    ||");
+		System.out.println("||                                                 ||");
+	}
+
+	public void ingresoS() {
+		System.out.println("||=================================================||");
+		System.out.println("|| -> Ingrese el nombre de Usuario.                ||");
+		System.out.println("|| -> Luego presione la tecla ENTER.               ||");
+		System.out.println("||                                                 ||");
+		System.out.print("|| Nombre : ");
+	}
+
+	public void ingresoStrInvalido() {
+		System.out.println();
+		System.out.println("||=================================================||");
+		System.out.println("|| Entrada Incorrecta.                             ||");
+		System.out.println("|| Por favor, ingrese un nombre valido.            ||");
+		System.out.println("||=================================================||");
+	}
+	
+	public void ingresoIntInvalido() {
+		System.out.println();
+		System.out.println("||=================================================||");
+		System.out.println("|| Opcion no disponible.                           ||");
+		System.out.println("|| Por favor, ingrese una opcion valida.           ||");
+		System.out.println("||=================================================||");
+	}
+
+	public void menuAdmin() {
 		System.out.println();
 		System.out.println("||=================================================||");
 		System.out.println("|| MENU                                            ||");
@@ -24,18 +52,10 @@ public class Pantalla {
 		System.out.println("|| 1 -> para mostrar los usuarios cargados.        ||");
 		System.out.println("|| 2 -> para mostrar las atracciones cargadas.     ||");
 		System.out.println("|| 3 -> para mostrar las promociones cargadas.     ||");
-		System.out.println("|| 4 -> para mostrar las sugerencias.              ||");
-		System.out.println("|| 5 -> generar Archivo con todos los datos.       ||");
+		System.out.println("|| 4 -> llenar todos los itinerarios. (manual)     ||");
+		System.out.println("|| 5 -> llenar todos los itinerarios. (automatico) ||");
 		System.out.println("||                                                 ||");
 		System.out.println("|| 9 -> para finalizar el programa.                ||");
-		System.out.println("||=================================================||");
-	}
-
-	public void noDisponible() {
-		System.out.println();
-		System.out.println("||=================================================||");
-		System.out.println("|| Entrada no valida.                              ||");
-		System.out.println("|| Por favor, ingrese una opcion valida.           ||");
 		System.out.println("||=================================================||");
 	}
 
@@ -44,6 +64,7 @@ public class Pantalla {
 		System.out.println("||=================================================||");
 		System.out.println("|| Programa finalizado... gracias por testear      ||");
 		System.out.println("||=================================================||");
+		System.out.println();
 	}
 
 	private void motrarUsuario(Usuario usuario) {
@@ -95,7 +116,7 @@ public class Pantalla {
 		System.out.println("|| Costo total Promocion ->                   $" + p.getCosto() + " ||");
 		System.out.println("|| Duracion de la Atraccion ->           " + p.getTiempo() + " Horas ||");
 	}
-	
+
 	public void mostrarLasPromociones(List<Promocion> promociones) {
 		System.out.println();
 		System.out.println("||=================================================||");
