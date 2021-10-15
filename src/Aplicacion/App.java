@@ -45,6 +45,11 @@ public class App {
 			entradaS = ingresarDatoStr();
 			pantalla.barra();
 
+			if (entradaS.equals("salir")) {
+				pantalla.salir();
+				break;
+			}
+			
 			if (entradaS.equals("admin")) {
 				mode = 1;
 			} else {
@@ -105,7 +110,6 @@ public class App {
 				// LLenar Itinerarios automaticamente
 				break;
 			case 9:
-				pantalla.salir();
 				salir = true;
 				break;
 			default:
@@ -113,6 +117,7 @@ public class App {
 				break;
 			}
 		}
+		pantalla.salir();
 	}
 
 	public static void ingresoDeUsuario(List<Usuario> listadoUsuarios, String nombre,
@@ -154,7 +159,6 @@ public class App {
 				pantalla.mostrarLasPromociones(listadoPromociones);
 				break;
 			case 9:
-				pantalla.salir();
 				salir = true;
 				break;
 			default:
@@ -162,6 +166,7 @@ public class App {
 				break;
 			}
 		}
+		pantalla.salir();
 	}
 
 //Metodo creacion Usuario
