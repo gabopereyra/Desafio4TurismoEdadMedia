@@ -46,7 +46,7 @@ public class Pantalla {
 	public void menuAdmin() {
 		System.out.println();
 		System.out.println("||=================================================||");
-		System.out.println("|| MENU                                            ||");
+		System.out.println("|| MENU ADMINISTRADOR                              ||");
 		System.out.println("||=================================================||");
 		System.out.println("||                                                 ||");
 		System.out.println("|| 1 -> para mostrar los usuarios cargados.        ||");
@@ -54,6 +54,23 @@ public class Pantalla {
 		System.out.println("|| 3 -> para mostrar las promociones cargadas.     ||");
 		System.out.println("|| 4 -> llenar todos los itinerarios. (manual)     ||");
 		System.out.println("|| 5 -> llenar todos los itinerarios. (automatico) ||");
+		System.out.println("||                                                 ||");
+		System.out.println("|| 9 -> para finalizar el programa.                ||");
+		System.out.println("||=================================================||");
+	}
+	
+	public void menuUser() {
+		System.out.println();
+		System.out.println("||=================================================||");
+		System.out.println("|| MENU USUARIO                                    ||");
+		System.out.println("||=================================================||");
+		System.out.println("||                                                 ||");
+		System.out.println("|| 1 -> Mostrar estado.                    	        ||");
+		System.out.println("|| 2 -> LLenar el itinerario.                      ||");
+		System.out.println("|| 3 -> Añadir mas presupuesto.                    ||");
+		System.out.println("|| 4 -> Añadir mas tiempo disponible.              ||");
+		System.out.println("|| 5 -> Visualizar Atracciones Disponibles.        ||");
+		System.out.println("|| 6 -> Visualizar Promociones Disponibles.        ||");
 		System.out.println("||                                                 ||");
 		System.out.println("|| 9 -> para finalizar el programa.                ||");
 		System.out.println("||=================================================||");
@@ -67,7 +84,7 @@ public class Pantalla {
 		System.out.println();
 	}
 
-	private void motrarUsuario(Usuario usuario) {
+	public void motrarUsuario(Usuario usuario) {
 		System.out.println("||=================================================||");
 		System.out.println("|| Nombre de Usuario -> " + usuario.getNombre());
 		System.out.println("|| preferencias      -> " + usuario.getTipoAtraccionFavorita());

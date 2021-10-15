@@ -28,8 +28,8 @@ public class App {
 
 	public static void main(String[] args) {
 
-		int index = 0;		//se usa para saber la posicion del usuario buscado
-		char mode = 0;		//se usa para evaluar que accion tomar segun el nombre ingresado
+		int index = 0; // se usa para saber la posicion del usuario buscado
+		char mode = 0; // se usa para evaluar que accion tomar segun el nombre ingresado
 		String entradaS;
 		Pantalla pantalla = new Pantalla();
 
@@ -69,7 +69,7 @@ public class App {
 				break;
 
 			case 2:// user
-				ingresoDeUsuario(index);
+				ingresoDeUsuario(listadoUsuarios, entradaS, listadoAtracciones, listadoPromociones);
 				break;
 
 			}
@@ -77,8 +77,8 @@ public class App {
 		}
 	}
 
-	public static void ingresoDeAdministrador(List<Usuario> listadoUsuarios, 
-			List<Atraccion> listadoAtracciones, List<Promocion> listadoPromociones) {
+	public static void ingresoDeAdministrador(List<Usuario> listadoUsuarios, List<Atraccion> listadoAtracciones,
+			List<Promocion> listadoPromociones) {
 
 		boolean salir = false;
 		Pantalla pantalla = new Pantalla();
@@ -99,27 +99,69 @@ public class App {
 				pantalla.mostrarLasPromociones(listadoPromociones);
 				break;
 			case 4:
-				//LLenar Itinerarios manualmente
+				// LLenar Itinerarios manualmente
 				break;
 			case 5:
-				//LLenar Itinerarios automaticamente
+				// LLenar Itinerarios automaticamente
 				break;
 			case 9:
 				pantalla.salir();
 				salir = true;
 				break;
 			default:
-				pantalla.ingresoStrInvalido();
+				pantalla.ingresoIntInvalido();
 				break;
 			}
-
 		}
 	}
-	
-	public static void ingresoDeUsuario(int index) {
-		//aca se tomaria un usuario en particular, ayudado con el index se ...
-		//deberia saber en que posicion se encuentra el busado.
-		
+
+	public static void ingresoDeUsuario(List<Usuario> listadoUsuarios, String nombre,
+			List<Atraccion> listadoAtracciones, List<Promocion> listadoPromociones) {
+
+		boolean salir = false;
+		Pantalla pantalla = new Pantalla();
+
+		Usuario usuario = new Usuario();
+		for (Usuario i : listadoUsuarios) {
+			if(i.getNombre().equals(nombre)) {
+				usuario = i;
+			}
+		}
+
+		while (!salir) {
+			pantalla.menuUser();
+
+			int entradaI = (Integer) ingresarDatoInt();
+
+			switch (entradaI) {
+			case 1:
+				pantalla.motrarUsuario(usuario);
+				pantalla.barra();
+				break;
+			case 2:
+				//Aca iria funcion llenar Itinerario
+				break;
+			case 3:
+				//ingreso de un numero para incremntar presupuesto
+				break;
+			case 4:
+				//ingreso de un numero para incremntar tiempo disponible
+				break;
+			case 5:
+				pantalla.mostrarLasAtracciones(listadoAtracciones);
+				break;
+			case 6:
+				pantalla.mostrarLasPromociones(listadoPromociones);
+				break;
+			case 9:
+				pantalla.salir();
+				salir = true;
+				break;
+			default:
+				pantalla.ingresoIntInvalido();
+				break;
+			}
+		}
 	}
 
 //Metodo creacion Usuario
